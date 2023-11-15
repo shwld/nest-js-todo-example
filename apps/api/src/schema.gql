@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateTaskInput {
+  description: String
+  title: String!
+}
+
+input CreateUserInput {
+  username: String!
+}
+
+type Mutation {
+  createTask(input: CreateTaskInput!): Task
+  createUser(input: CreateUserInput!): User!
+  updateTaskStatus(input: UpdateTaskStatusInput!): Task
+}
+
+type Query {
+  viewer: Viewer
+}
+
+type Task {
+  description: String
+  id: ID!
+  status: TaskStatus!
+  title: String!
+}
+
+enum TaskStatus {
+  DOING
+  DONE
+  TODO
+}
+
+input UpdateTaskStatusInput {
+  id: ID!
+  status: TaskStatus!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Viewer {
+  id: ID!
+  name: String!
+  taskStatuses: [String!]!
+  tasks: [Task!]!
+}
